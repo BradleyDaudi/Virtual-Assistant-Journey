@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VA — Data Analyst Tools Learning Schedule (Brad & Cynthia)</title>
+  <style>
+    :root{--bg:#0f172a;--card:#0b1220;--muted:#94a3b8;--accent:#7c3aed;--ok:#10b981}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial; background:linear-gradient(180deg,#071024 0%, #07182b 100%);color:#e6eef8;margin:0;padding:28px}
+    .container{max-width:980px;margin:0 auto}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:4px 0 18px;color:var(--muted)}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:16px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px 12px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.03)}
+    th{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em}
+    td small{display:block;color:var(--muted);margin-top:6px}
+    .checkbox{display:flex;gap:8px;align-items:center}
+    .timeline{white-space:nowrap}
+    .controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    button{background:var(--accent);border:none;color:white;padding:8px 12px;border-radius:8px;cursor:pointer}
+    button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+    .ok{background:var(--ok)}
+    .export-area{margin-top:14px;font-size:13px;color:var(--muted)}
+    footer{margin-top:14px;color:var(--muted);font-size:13px}
+    .flex{display:flex;gap:12px;align-items:center}
+    .pill{background:rgba(255,255,255,0.02);padding:6px 10px;border-radius:999px;font-size:13px}
+    .note{background:#071431;padding:10px;border-radius:8px;margin-top:12px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="pill">Virtual Assistant — Data Analyst Track</div>
+      <div style="flex:1">
+        <h1>Learning Schedule: Tools & Timelines</h1>
+        <p class="lead">A compact, Notion-importable tracker for Brad and Cynthia. Check boxes persist locally and you can export CSV for direct import into Notion.</p>
+      </div>
+    </header>
+
+    <div class="card">
+      <table id="schedule">
+        <thead>
+          <tr>
+            <th>Tool / Topic</th>
+            <th>Suggested Timeline</th>
+            <th>Estimated Hours</th>
+            <th>Brad — Done</th>
+            <th>Cynthia — Done</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- rows inserted by JS -->
+        </tbody>
+      </table>
+
+      <div class="controls">
+        <button id="saveLocal" class="ghost">Save progress locally</button>
+        <button id="exportCsv">Export CSV (for Notion)</button>
+        <button id="copyCsv" class="ghost">Copy CSV to clipboard</button>
+        <button id="reset">Reset progress</button>
+      </div>
+
+      <div class="export-area" id="exportArea"></div>
+
+      <div class="note">
+        <strong>How to import into Notion:</strong>
+        <ol style="margin:8px 0 0 18px">
+          <li>Click <em>Export CSV</em> — a file named <code>va-tools-schedule.csv</code> will download.</li>
+          <li>In Notion, open the page where you want the table and choose <em>Import &gt; CSV</em>, or create a new database and click ••• &gt; <em>Merge with CSV</em>.</li>
+          <li>Map columns (Tool, Timeline, Hours, Brad, Cynthia, Notes). Notion will interpret "true/false" as checkbox values; you can edit them there.</li>
+        </ol>
+      </div>
+
+    </div>
+
+    <footer>
+      Tip: use the CSV export to bulk-create tasks in Notion, then add dates, assignees, and reminders in Notion as needed.
+    </footer>
+  </div>
+
+<script>
+// Core data: tools, timeline, hours, notes
+const defaultData = [
+  {tool:'Microsoft Outlook', timeline:'1 week (email basics, rules, calendar integration)', hours:6, notes:'Email + calendar management, templates'},
+  {tool:'Microsoft Excel (intermediate)', timeline:'2 weeks (pivot, formulas, tables)', hours:18, notes:'PivotTables, VLOOKUP/XLOOKUP, tables'},
+  {tool:'Power BI', timeline:'2 weeks (visualization, DAX basics)', hours:20, notes:'Reports, publish to service'},
+  {tool:'SQL (Postgres/BigQuery basics)', timeline:'2 weeks', hours:20, notes:'SELECT, JOINs, GROUP BY'},
+  {tool:'Python (pandas)', timeline:'3 weeks', hours:30, notes:'Data cleaning, pandas basics'},
+  {tool:'Tableau', timeline:'1.5 weeks', hours:14, notes:'Dashboards and story points'},
+  {tool:'Google Workspace (Drive, Sheets, Docs)', timeline:'1 week', hours:6, notes:'Collaboration, sharing permissions'},
+  {tool:'Slack (channels, apps)', timeline:'3 days', hours:3, notes:'Notifications, workflows'},
+  {tool:'Trello / Asana', timeline:'3 days', hours:3, notes:'Boards, automation templates'},
+  {tool:'Notion (dbs & templates)', timeline:'1 week', hours:8, notes:'Databases, templates, sync with CSV'},
+  {tool:'Zapier / Power Automate', timeline:'1 week', hours:10, notes:'Automation between apps'},
+  {tool:'Git & GitHub (basics)', timeline:'1 week', hours:6, notes:'Version control, cloning, commits'}
+];
+
+// Load or initialize state
+const STORAGE_KEY = 'va-learning-progress-v1';
+let state = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+if(!state){
+  state = {rows: defaultData.map(r=>({...r, brad:false, cynthia:false}))};
+}
+
+const tbody = document.querySelector('#schedule tbody');
+
+function render(){
+  tbody.innerHTML = '';
+  state.rows.forEach((r, i)=>{
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><strong>${escapeHtml(r.tool)}</strong><small>${escapeHtml(r.tool)}</small></td>
+      <td class="timeline">${escapeHtml(r.timeline)}</td>
+      <td>${escapeHtml(String(r.hours))}</td>
+      <td><label class="checkbox"><input data-i="${i}" data-person="brad" type="checkbox" ${r.brad? 'checked':''}/> <span></span></label></td>
+      <td><label class="checkbox"><input data-i="${i}" data-person="cynthia" type="checkbox" ${r.cynthia? 'checked':''}/> <span></span></label></td>
+      <td><small>${escapeHtml(r.notes)}</small></td>
+    `;
+    tbody.appendChild(tr);
+  });
+  // attach listeners
+  tbody.querySelectorAll('input[type=checkbox]').forEach(cb=>{
+    cb.addEventListener('change', e=>{
+      const i = Number(cb.dataset.i);
+      const p = cb.dataset.person;
+      state.rows[i][p] = cb.checked;
+      // auto-save to localStorage
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    });
+  });
+}
+
+function escapeHtml(s){return String(s).replace(/[&<>\"]+/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]||c));}
+
+// export CSV
+function toCsv(){
+  const header = ['Tool','Timeline','Hours','Brad','Cynthia','Notes'];
+  const rows = state.rows.map(r=>[
+    csvEscape(r.tool),csvEscape(r.timeline),csvEscape(r.hours),r.brad? 'true':'false',r.cynthia? 'true':'false',csvEscape(r.notes)
+  ]);
+  return [header.join(','), ...rows.map(r=>r.join(','))].join('\n');
+}
+function csvEscape(v){
+  if(v===null||v===undefined) return '';
+  const s = String(v);
+  if(s.includes(',')||s.includes('\"')||s.includes('\n')) return '"'+s.replace(/"/g,'""')+'"';
+  return s;
+}
+
+// Buttons
+document.getElementById('exportCsv').addEventListener('click', ()=>{
+  const csv = toCsv();
+  const blob = new Blob([csv], {type:'text/csv'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'va-tools-schedule.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  document.getElementById('exportArea').textContent = 'CSV exported: va-tools-schedule.csv';
+});
+
+document.getElementById('copyCsv').addEventListener('click', async ()=>{
+  const csv = toCsv();
+  try{ await navigator.clipboard.writeText(csv); document.getElementById('exportArea').textContent = 'CSV copied to clipboard.'; }catch(e){ document.getElementById('exportArea').textContent = 'Copy failed. Please use Export CSV.'; }
+});
+
+document.getElementById('saveLocal').addEventListener('click', ()=>{
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  document.getElementById('exportArea').textContent = 'Progress saved locally.';
+});
+
+document.getElementById('reset').addEventListener('click', ()=>{
+  if(!confirm('Reset progress to defaults?')) return;
+  state = {rows: defaultData.map(r=>({...r, brad:false, cynthia:false}))};
+  localStorage.removeItem(STORAGE_KEY);
+  render();
+  document.getElementById('exportArea').textContent = 'Progress reset.';
+});
+
+render();
+
+</script>
+</body>
+</html>

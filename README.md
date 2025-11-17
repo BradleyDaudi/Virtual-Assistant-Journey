@@ -2,8 +2,8 @@
 
 # Data Virtual Assistant — Project Showcase
 
-> **Welcome to my Data Virtual Assistant Portfolio!** <br>
-> As a proud Gen Z techie, I combine aesthetics, automation, and analytics to deliver efficient, data‑driven support. This repo highlights the tools I've mastered, the systems I’ve built, and the projects created while following the **Virtual Assistant — Data Analyst Track**.
+> **Welcome to our Data Virtual Assistant Portfolio!** <br>
+> As  proud Gen Z techies, We combine aesthetics, automation and analytics to deliver efficient, data‑driven support. This repo highlights the tools We've mastered, the systems We’ve built, and the projects created while following the **Virtual Assistant — Data Analyst Track**.
 
 
 ![Floating Shapes](https://media.giphy.com/media/l0HlNQ03J5JxX6lva/giphy.gif)
@@ -11,7 +11,7 @@
 
 ## 📚 Learning Schedule & Tools Mastered
 
-A full skill‑building journey following the **Virtual Assistant — Data Analyst Track**. Each tool was practiced through hands‑on mini‑projects.
+A full skill‑building journey following the **Virtual Assistant — Data Analyst Track**.
 
 | Tool / Topic                          | Suggested Timeline | Estimated Hours | Projects Completed                         | Notes                                 |
 | ------------------------------------- | ------------------ | --------------- | ------------------------------------------ | ------------------------------------- |
@@ -28,7 +28,7 @@ A full skill‑building journey following the **Virtual Assistant — Data Analy
 | **Zapier / Power Automate**           | 1 week             | 10 hrs          | ✔ Multi‑app Automation Flows               | CRM + admin automation                |
 | **Git & GitHub (Basics)**             | 1 week             | 6 hrs           | ✔ Repo Management                          | Commits, version control              |
 | **Canva**                             | 1 week             | 6 hrs           | ✔ Client Reports, Brand Kits, Social Packs | Visual design + templates             |
-| **Additional Tools (Gen Z Level‑Up)** | —                  | —               | ✔ —                                        | Loom, Figma, ChatGPT, Miro            |
+| **Additional Tools (   Level‑Up   )** | —                  | —               | ✔ —                                        | Loom, Figma, ChatGPT, Miro            |
 
 ---
 
@@ -109,4 +109,6 @@ If you’d like a custom template, dashboard, or automation:
 Thanks for visiting — stay caffeinated ☕ and stay curious 💡!
 
 ---
+
+## Contact us :[ @Cynthia Koskei](https://github.com/cynthiakoskei), [ @Bradley Daudi](https://github.com/BradleyDaudi))
 

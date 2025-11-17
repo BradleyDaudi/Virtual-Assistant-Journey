@@ -1,6 +1,6 @@
 [![View Live Interactive Page](https://img.shields.io/badge/OPEN-LIVE%20DEMO-blue?style=for-the-badge)](https://bradleydaudi.github.io/Virtual-Assistant-Journey/)
 
-# Data Virtual Assistant — Project Showcase
+# Data Virtual Assistant — Roadmap
 
 > **Welcome to our Data Virtual Assistant Portfolio!** <br>
 > As  proud Gen Z techies, We combine aesthetics, automation and analytics to deliver efficient, data‑driven support. This repo highlights the tools We've mastered, the systems We’ve built, and the projects created while following the **Virtual Assistant — Data Analyst Track**.

@@ -110,5 +110,5 @@ Thanks for visiting — stay caffeinated ☕ and stay curious 💡!
 
 ---
 
-## Contact us :[ @Cynthia Koskei](https://github.com/cynthiakoskei), [ @Bradley Daudi](https://github.com/BradleyDaudi))
+#### Contact us :[ @Cynthia Koskei](https://github.com/cynthiakoskei), [ @Bradley Daudi](https://github.com/BradleyDaudi))
 

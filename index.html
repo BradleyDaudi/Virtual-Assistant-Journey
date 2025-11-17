@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Gen Z Data VA — Interactive Tracker</title>
+
   <style>
-    /* Simple reset */
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
     :root{--bg:#0f1724;--card:#0b1220;--accent:#7c3aed;--muted:#94a3b8;--glass:rgba(255,255,255,0.03)}
     body{background:linear-gradient(180deg,#071024 0%, #071a2b 60%);color:#e6eef8}
     .wrap{max-width:1100px;margin:40px auto;padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:16px;box-shadow:0 10px 30px rgba(2,6,23,0.6);position:relative;overflow:hidden}
@@ -14,83 +14,84 @@
     header h1{margin:0;font-size:22px}
     .subtitle{color:var(--muted);font-size:13px}
 
-    /* table */
     table{width:100%;border-collapse:collapse;margin-top:18px}
     th,td{padding:10px 12px;text-align:left;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.03)}
     th{color:var(--muted);font-weight:600}
     tr:hover td{background:rgba(255,255,255,0.01)}
+
     .tiny{font-size:12px;color:var(--muted)}
 
-    /* buttons */
-    .row{display:flex;gap:8px;align-items:center}
     button{background:linear-gradient(90deg,var(--accent),#3b82f6);border:0;color:white;padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:600}
     .ghost{background:transparent;border:1px solid rgba(255,255,255,0.04)}
 
-    /* card for background canvas */
     .canvas-wrap{position:absolute;inset:0;pointer-events:none}
-
-    /* responsive */
-    @media (max-width:720px){.wrap{margin:18px;padding:16px;border-radius:12px}} 
-
-    /* floating badge */
     .badge{position:absolute;right:18px;top:18px;background:var(--glass);padding:8px 10px;border-radius:12px;font-size:12px;color:var(--muted)}
+
+    @media (max-width:720px){
+      .wrap{margin:18px;padding:16px;border-radius:12px}
+    }
   </style>
 </head>
 <body>
   <div class="canvas-wrap">
     <canvas id="bg"></canvas>
   </div>
+
   <main class="wrap" role="main">
     <div class="badge">Gen Z • Data VA</div>
+
     <header>
       <div>
         <h1>Gen Z Data Virtual Assistant — Interactive Tracker</h1>
         <div class="subtitle">A compact, Notion-importable tracker. Checkboxes persist locally & export CSV.</div>
       </div>
-      <div style="margin-left:auto" class="row">
+
+      <div style="margin-left:auto; display:flex; gap:8px;">
         <button id="export">Download CSV</button>
         <button id="reset" class="ghost">Reset</button>
       </div>
     </header>
 
-    <section aria-labelledby="schedule">
-      <table id="tracker" role="table" aria-label="Learning schedule tracker">
-        <thead>
-          <tr>
-            <th>Tool / Topic</th>
-            <th>Suggested Timeline</th>
-            <th>Estimated Hours</th>
-            <th>Brad — Done</th>
-            <th>Cynthia — Done</th>
-            <th class="tiny">Notes</th><th>Links</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- rows injected by JS -->
-        </tbody>
-      </table>
-    </section>
+    <table id="tracker">
+      <thead>
+        <tr>
+          <th>Tool / Topic</th>
+          <th>Suggested Timeline</th>
+          <th>Estimated Hours</th>
+          <th>Brad — Done</th>
+          <th>Cynthia — Done</th>
+          <th>Notes</th>
+          <th>Links</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
 
     <p class="tiny" style="margin-top:12px">Tip: After checking boxes, click <strong>Download CSV</strong> to export and import into Notion.</p>
   </main>
 
   <script>
-    /* ---------- Animated background (particles) ---------- */
+    /* Background particles */
     const canvas=document.getElementById('bg');
     const ctx=canvas.getContext('2d');
-    let W, H, particles=[];
+    let W,H,particles=[];
     function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;}
     window.addEventListener('resize',resize);resize();
-    function rand(min,max){return Math.random()*(max-min)+min}
-    class P{constructor(){this.x=rand(0,W);this.y=rand(0,H);this.r=rand(0.6,2.6);this.vx=rand(-0.35,0.35);this.vy=rand(-0.2,0.2);this.alpha=rand(0.1,0.9)}
-      step(){this.x+=this.vx;this.y+=this.vy; if(this.x<0)this.x=W; if(this.x>W)this.x=0; if(this.y<0)this.y=H; if(this.y>H)this.y=0}
-      draw(){ctx.beginPath();ctx.globalAlpha=this.alpha;ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle='white';ctx.fill();ctx.globalAlpha=1}
-    }
-    function initParticles(n=90){particles=[];for(let i=0;i<n;i++)particles.push(new P())}
-    function loop(){ctx.clearRect(0,0,W,H);for(let p of particles){p.step();p.draw()}requestAnimationFrame(loop)}
-    initParticles();loop();
 
-    /* ---------- Tracker data & UI ---------- */
+    function rand(a,b){return Math.random()*(b-a)+a}
+
+    class P{
+      constructor(){this.x=rand(0,W);this.y=rand(0,H);this.r=rand(0.8,2.4);this.vx=rand(-0.3,0.3);this.vy=rand(-0.3,0.3);this.alpha=rand(0.2,0.9);}
+      step(){this.x+=this.vx;this.y+=this.vy;if(this.x<0)this.x=W;if(this.x>W)this.x=0;if(this.y<0)this.y=H;if(this.y>H)this.y=0;}
+      draw(){ctx.beginPath();ctx.globalAlpha=this.alpha;ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle="white";ctx.fill();ctx.globalAlpha=1;}
+    }
+
+    function init(n=90){particles=[];for(let i=0;i<n;i++)particles.push(new P());}
+    function loop(){ctx.clearRect(0,0,W,H);particles.forEach(p=>{p.step();p.draw()});requestAnimationFrame(loop)}
+    init();loop();
+
+    /* Tracker data */
     const defaultRows = [
       ['Microsoft Outlook','1 week (email basics, rules, calendar integration)','6','false','false','Email + calendar management, templates','https://www.youtube.com/watch?v=2J2Z9v_1a9o'],
       ['Microsoft Excel (intermediate)','2 weeks (pivot, formulas, tables)','18','false','false','PivotTables, VLOOKUP/XLOOKUP, tables','https://www.youtube.com/watch?v=0oBx7Jg4m-o'],
@@ -108,39 +109,78 @@
       ['Loom / Figma / Miro / ChatGPT','varied','varied','false','false','Extras for communications & design','https://www.youtube.com/watch?v=FTFaQWZBqQ8']
     ];
 
-    function load(){const raw=localStorage.getItem('va-tracker-v1');if(!raw){localStorage.setItem('va-tracker-v1',JSON.stringify(defaultRows));return defaultRows}try{return JSON.parse(raw)}catch(e){localStorage.setItem('va-tracker-v1',JSON.stringify(defaultRows));return defaultRows}}
-    function save(rows){localStorage.setItem('va-tracker-v1',JSON.stringify(rows))}
-    function render(){const tbody=document.querySelector('#tracker tbody');tbody.innerHTML='';const rows=load();rows.forEach((r,i)=>{
-      const tr=document.createElement('tr');
-      for(let c=0;c<7;c++){
-        const td=document.createElement('td');
-        if(c===3||c===4){
-          const chk=document.createElement('input');chk.type='checkbox';chk.checked=(r[c]==='true');chk.dataset.row=i;chk.dataset.col=c;
-          chk.addEventListener('change',e=>{const rows=load();rows[i][c]=e.target.checked?'true':'false';save(rows)});
-          td.appendChild(chk);
-        } else td.textContent=r[c];
-        tr.appendChild(td);
-      }
-      tbody.appendChild(tr);
-    })}
+    function load(){
+      const raw=localStorage.getItem("va-tracker-v1");
+      if(!raw){localStorage.setItem("va-tracker-v1",JSON.stringify(defaultRows));return defaultRows}
+      try{return JSON.parse(raw)}catch(e){localStorage.setItem("va-tracker-v1",JSON.stringify(defaultRows));return defaultRows}
+    }
 
-    document.getElementById('export').addEventListener('click',()=>{
+    function save(rows){localStorage.setItem("va-tracker-v1",JSON.stringify(rows))}
+
+    function render(){
+      const tbody=document.querySelector("#tracker tbody");
+      tbody.innerHTML="";
       const rows=load();
-      const csv = ['Tool / Topic,Suggested Timeline,Estimated Hours,Brad — Done,Cynthia — Done,Notes',...rows.map(r=>r.map(cell=>`"${String(cell).replace(/"/g,'""')}"`).join(','))].join('
-');
-      const blob=new Blob([csv],{type:'text/csv'});
-      const url=URL.createObjectURL(blob);
-      const a=document.createElement('a');a.href=url;a.download='va-learning-tracker.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
-    })
 
-    document.getElementById('reset').addEventListener('click',()=>{if(confirm('Reset all progress to defaults?')){localStorage.removeItem('va-tracker-v1');render();}})
+      rows.forEach((r,i)=>{
+        const tr=document.createElement("tr");
+
+        for(let c=0;c<7;c++){
+          const td=document.createElement("td");
+
+          if(c===3 || c===4){
+            const chk=document.createElement("input");
+            chk.type="checkbox";
+            chk.checked=(r[c]==="true");
+            chk.addEventListener("change",e=>{
+              const rows=load();
+              rows[i][c]=e.target.checked?"true":"false";
+              save(rows);
+            });
+            td.appendChild(chk);
+
+          } else if(c===6) {
+            const a=document.createElement("a");
+            a.href=r[c];
+            a.target="_blank";
+            a.textContent="Watch";
+            a.style.color="#60a5fa";
+            td.appendChild(a);
+
+          } else {
+            td.textContent=r[c];
+          }
+
+          tr.appendChild(td);
+        }
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    document.getElementById("export").addEventListener("click",()=>{
+      const rows=load();
+      const csv=["Tool,Timeline,Hours,Brad,Cynthia,Notes,Links",
+        ...rows.map(r=>r.map(x=>`"${x.replace(/"/g,'""')}"`).join(","))].join("\n");
+
+      const blob=new Blob([csv],{type:"text/csv"});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement("a");
+      a.href=url;
+      a.download="va-learning-tracker.csv";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById("reset").addEventListener("click",()=>{
+      if(confirm("Reset all progress?")){
+        localStorage.removeItem("va-tracker-v1");
+        render();
+      }
+    });
 
     render();
-
-    /* Accessibility: reduce particle count if prefers-reduced-motion */
-    const mr=window.matchMedia('(prefers-reduced-motion: reduce)');if(mr.matches){particles=[]}
   </script>
+
 </body>
 </html>
-
-

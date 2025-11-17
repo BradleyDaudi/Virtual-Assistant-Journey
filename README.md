@@ -1,1 +1,296 @@
 [![View Live Interactive Page](https://img.shields.io/badge/OPEN-LIVE%20DEMO-blue?style=for-the-badge)](https://bradleydaudi.github.io/Virtual-Assistant-Journey/)
+
+# Data Virtual Assistant — Project Showcase
+
+> **Welcome to my Data Virtual Assistant Portfolio!** <br>
+> As a proud Gen Z techie, I combine aesthetics, automation, and analytics to deliver efficient, data‑driven support. This repo highlights the tools I've mastered, the systems I’ve built, and the projects created while following the **Virtual Assistant — Data Analyst Track**.
+
+---
+
+## 🚀 Interactive + Fun Background
+
+To keep things lively, this README includes animated GIF elements — a little Gen Z sparkle ✨
+
+![Floating Shapes](https://media.giphy.com/media/l0HlNQ03J5JxX6lva/giphy.gif)
+
+---
+
+## 📚 Learning Schedule & Tools Mastered
+
+A full skill‑building journey following the **Virtual Assistant — Data Analyst Track**. Each tool was practiced through hands‑on mini‑projects.
+
+| Tool / Topic                          | Suggested Timeline | Estimated Hours | Projects Completed                         | Notes                                 |
+| ------------------------------------- | ------------------ | --------------- | ------------------------------------------ | ------------------------------------- |
+| **Microsoft Outlook**                 | 1 week             | 6 hrs           | ✔ Email & Calendar Automation Templates    | Email + calendar mgmt, workflow rules |
+| **Microsoft Excel (Intermediate)**    | 2 weeks            | 18 hrs          | ✔ Dashboards, Lookup Systems               | PivotTables, VLOOKUP/XLOOKUP, tables  |
+| **Power BI**                          | 2 weeks            | 20 hrs          | ✔ Sales & Ops Reports                      | Visualization + DAX basics            |
+| **SQL (Postgres/BigQuery)**           | 2 weeks            | 20 hrs          | ✔ Query Library                            | SELECT, JOINs, GROUP BY               |
+| **Python (pandas)**                   | 3 weeks            | 30 hrs          | ✔ Cleaning Scripts, CSV Automation Bot     | pandas data cleaning                  |
+| **Tableau**                           | 1.5 weeks          | 14 hrs          | ✔ Interactive Story Dashboard              | Storypoints + dashboards              |
+| **Google Workspace**                  | 1 week             | 6 hrs           | ✔ Permission Matrix + Shared Drive Setup   | Docs, Sheets, Drive collaboration     |
+| **Slack**                             | 3 days             | 3 hrs           | ✔ Notification + Bot Setup                 | Channels, alerts                      |
+| **Trello / Asana**                    | 3 days             | 3 hrs           | ✔ Workflow Board Templates                 | Boards + mini automations             |
+| **Notion**                            | 1 week             | 8 hrs           | ✔ VA Control Center Template               | Databases, templates, CSV sync        |
+| **Zapier / Power Automate**           | 1 week             | 10 hrs          | ✔ Multi‑app Automation Flows               | CRM + admin automation                |
+| **Git & GitHub (Basics)**             | 1 week             | 6 hrs           | ✔ Repo Management                          | Commits, version control              |
+| **Canva**                             | 1 week             | 6 hrs           | ✔ Client Reports, Brand Kits, Social Packs | Visual design + templates             |
+| **Additional Tools (Gen Z Level‑Up)** | —                  | —               | ✔ —                                        | Loom, Figma, ChatGPT, Miro            |
+
+---
+
+## 🧩 Highlighted Projects
+
+### **1. Notion Learning Tracker (Import‑Ready Template)**
+
+A clean and compact tracker with:
+
+* Persistent checkboxes
+* CSV export
+* Timelines & notes section
+* Styled for Notion’s dark/light theme
+
+### **2. Power BI Operations Dashboard**
+
+A multi‑page dashboard visualizing:
+
+* Weekly performance trends
+* Department outputs
+* Productivity metrics
+
+### **3. Data‑Cleaning Automation Script (Python + Pandas)**
+
+Automates:
+
+* Column normalization
+* Missing value handling
+* CSV merging
+* Duplicate removal
+
+### **4. Excel Analytics Template Pack**
+
+Built for small businesses:
+
+* KPI dashboard
+* Dynamic tables
+* XLOOKUP‑powered data retrieval
+
+### **5. Canva Visual Report Kit**
+
+Designed monthly client reports:
+
+* Highlight metrics visually
+* Match brand templates
+* Export social‑ready summaries
+
+---
+
+## 💻 Repo Structure
+
+```
+📂 genz-data-va-portfolio
+ ├── 📁 powerbi-projects
+ ├── 📁 excel-dashboards
+ ├── 📁 notion-templates
+ ├── 📁 python-automation-scripts
+ ├── 📁 sql-queries
+ ├── 📁 canva-assets
+ └── README.md  ← you're here!
+```
+
+---
+
+## 🌟 Aesthetic Vibes Corner
+
+Because I’m Gen Z — the aesthetic is the brand.
+
+![Retro Grid](https://media.giphy.com/media/QTfX9Ejfra3ZmNxh6B/giphy.gif)
+
+---
+
+## 🧃 Let's Connect
+
+If you’d like a custom template, dashboard, or automation:
+**DM me or open an issue in this repo** 💬
+
+Thanks for visiting — stay caffeinated ☕ and stay curious 💡!
+
+---
+
+## 🌐 Make this README Live & Interactive
+
+I've added a ready-to-deploy single-file **interactive webpage (index.html)** to this repo in the canvas — it contains:
+
+* A lightweight canvas-based animated background.
+* The Learning Schedule table with persistent checkboxes (saved to `localStorage`).
+* A **Download CSV** button to export the tracker for direct import into Notion.
+* Mobile-friendly layout and accessible markup.
+
+To host:
+
+1. Copy the `index.html` file from this repo into the root of your GitHub repository (or `docs/` folder).
+2. In your repository settings enable **GitHub Pages** from the `main` branch (or `gh-pages` branch) and select the folder where `index.html` lives.
+3. Your README-like interactive page will be live at `https://<username>.github.io/<repo>/`.
+
+### What I added (files)
+
+* `index.html` — the interactive page. Included in this repo's files (see top-level). The HTML is a single self-contained file.
+
+> Note: I added the full `index.html` contents below so you can copy it directly into your repo.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gen Z Data VA — Interactive Tracker</title>
+  <style>
+    /* Simple reset */
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#7c3aed;--muted:#94a3b8;--glass:rgba(255,255,255,0.03)}
+    body{background:linear-gradient(180deg,#071024 0%, #071a2b 60%);color:#e6eef8}
+    .wrap{max-width:1100px;margin:40px auto;padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:16px;box-shadow:0 10px 30px rgba(2,6,23,0.6);position:relative;overflow:hidden}
+    header{display:flex;align-items:center;gap:16px}
+    header h1{margin:0;font-size:22px}
+    .subtitle{color:var(--muted);font-size:13px}
+
+    /* table */
+    table{width:100%;border-collapse:collapse;margin-top:18px}
+    th,td{padding:10px 12px;text-align:left;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.03)}
+    th{color:var(--muted);font-weight:600}
+    tr:hover td{background:rgba(255,255,255,0.01)}
+    .tiny{font-size:12px;color:var(--muted)}
+
+    /* buttons */
+    .row{display:flex;gap:8px;align-items:center}
+    button{background:linear-gradient(90deg,var(--accent),#3b82f6);border:0;color:white;padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:600}
+    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.04)}
+
+    /* card for background canvas */
+    .canvas-wrap{position:absolute;inset:0;pointer-events:none}
+
+    /* responsive */
+    @media (max-width:720px){.wrap{margin:18px;padding:16px;border-radius:12px}} 
+
+    /* floating badge */
+    .badge{position:absolute;right:18px;top:18px;background:var(--glass);padding:8px 10px;border-radius:12px;font-size:12px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="canvas-wrap">
+    <canvas id="bg"></canvas>
+  </div>
+  <main class="wrap" role="main">
+    <div class="badge">Gen Z • Data VA</div>
+    <header>
+      <div>
+        <h1>Gen Z Data Virtual Assistant — Interactive Tracker</h1>
+        <div class="subtitle">A compact, Notion-importable tracker. Checkboxes persist locally & export CSV.</div>
+      </div>
+      <div style="margin-left:auto" class="row">
+        <button id="export">Download CSV</button>
+        <button id="reset" class="ghost">Reset</button>
+      </div>
+    </header>
+
+    <section aria-labelledby="schedule">
+      <table id="tracker" role="table" aria-label="Learning schedule tracker">
+        <thead>
+          <tr>
+            <th>Tool / Topic</th>
+            <th>Suggested Timeline</th>
+            <th>Estimated Hours</th>
+            <th>Brad — Done</th>
+            <th>Cynthia — Done</th>
+            <th class="tiny">Notes</th><th>Links</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- rows injected by JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <p class="tiny" style="margin-top:12px">Tip: After checking boxes, click <strong>Download CSV</strong> to export and import into Notion.</p>
+  </main>
+
+  <script>
+    /* ---------- Animated background (particles) ---------- */
+    const canvas=document.getElementById('bg');
+    const ctx=canvas.getContext('2d');
+    let W, H, particles=[];
+    function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;}
+    window.addEventListener('resize',resize);resize();
+    function rand(min,max){return Math.random()*(max-min)+min}
+    class P{constructor(){this.x=rand(0,W);this.y=rand(0,H);this.r=rand(0.6,2.6);this.vx=rand(-0.35,0.35);this.vy=rand(-0.2,0.2);this.alpha=rand(0.1,0.9)}
+      step(){this.x+=this.vx;this.y+=this.vy; if(this.x<0)this.x=W; if(this.x>W)this.x=0; if(this.y<0)this.y=H; if(this.y>H)this.y=0}
+      draw(){ctx.beginPath();ctx.globalAlpha=this.alpha;ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle='white';ctx.fill();ctx.globalAlpha=1}
+    }
+    function initParticles(n=90){particles=[];for(let i=0;i<n;i++)particles.push(new P())}
+    function loop(){ctx.clearRect(0,0,W,H);for(let p of particles){p.step();p.draw()}requestAnimationFrame(loop)}
+    initParticles();loop();
+
+    /* ---------- Tracker data & UI ---------- */
+    const defaultRows = [
+      ['Microsoft Outlook','1 week (email basics, rules, calendar integration)','6','false','false','Email + calendar management, templates','https://www.youtube.com/watch?v=2J2Z9v_1a9o'],
+      ['Microsoft Excel (intermediate)','2 weeks (pivot, formulas, tables)','18','false','false','PivotTables, VLOOKUP/XLOOKUP, tables','https://www.youtube.com/watch?v=0oBx7Jg4m-o'],
+      ['Power BI','2 weeks (visualization, DAX basics)','20','false','false','Reports, publish to service','https://www.youtube.com/watch?v=AGrl-H87pRU'],
+      ['SQL (Postgres/BigQuery basics)','2 weeks','20','false','false','SELECT, JOINs, GROUP BY','https://www.youtube.com/watch?v=HXV3zeQKqGY'],
+      ['Python (pandas)','3 weeks','30','false','false','Data cleaning, pandas basics','https://www.youtube.com/watch?v=vYwX92g5dIM'],
+      ['Tableau','1.5 weeks','14','false','false','Dashboards and story points','https://www.youtube.com/watch?v=4KXJ4p7qf5w'],
+      ['Google Workspace (Drive, Sheets, Docs)','1 week','6','false','false','Collaboration, sharing permissions','https://www.youtube.com/watch?v=jWJ8brZbF64'],
+      ['Slack (channels, apps)','3 days','3','false','false','Notifications, workflows','https://www.youtube.com/watch?v=RRxQQxiM7AA'],
+      ['Trello / Asana','3 days','3','false','false','Boards, automation templates','https://www.youtube.com/watch?v=xky48zyL9iA'],
+      ['Notion (dbs & templates)','1 week','8','false','false','Databases, templates, sync with CSV','https://www.youtube.com/watch?v=4qFZgKkxz9Y'],
+      ['Zapier / Power Automate','1 week','10','false','false','Automation between apps','https://www.youtube.com/watch?v=TJfr8xP5Y8Y'],
+      ['Git & GitHub (basics)','1 week','6','false','false','Version control, cloning, commits','https://www.youtube.com/watch?v=RGOj5yH7evk'],
+      ['Canva','1 week','6','false','false','Visual design + templates','https://www.youtube.com/watch?v=0fKfK9dHnbw'],
+      ['Loom / Figma / Miro / ChatGPT','varied','varied','false','false','Extras for communications & design','https://www.youtube.com/watch?v=FTFaQWZBqQ8']
+    ];
+
+    function load(){const raw=localStorage.getItem('va-tracker-v1');if(!raw){localStorage.setItem('va-tracker-v1',JSON.stringify(defaultRows));return defaultRows}try{return JSON.parse(raw)}catch(e){localStorage.setItem('va-tracker-v1',JSON.stringify(defaultRows));return defaultRows}}
+    function save(rows){localStorage.setItem('va-tracker-v1',JSON.stringify(rows))}
+    function render(){const tbody=document.querySelector('#tracker tbody');tbody.innerHTML='';const rows=load();rows.forEach((r,i)=>{
+      const tr=document.createElement('tr');
+      for(let c=0;c<7;c++){
+        const td=document.createElement('td');
+        if(c===3||c===4){
+          const chk=document.createElement('input');chk.type='checkbox';chk.checked=(r[c]==='true');chk.dataset.row=i;chk.dataset.col=c;
+          chk.addEventListener('change',e=>{const rows=load();rows[i][c]=e.target.checked?'true':'false';save(rows)});
+          td.appendChild(chk);
+        } else td.textContent=r[c];
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    })}
+
+    document.getElementById('export').addEventListener('click',()=>{
+      const rows=load();
+      const csv = ['Tool / Topic,Suggested Timeline,Estimated Hours,Brad — Done,Cynthia — Done,Notes',...rows.map(r=>r.map(cell=>`"${String(cell).replace(/"/g,'""')}"`).join(','))].join('
+');
+      const blob=new Blob([csv],{type:'text/csv'});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a');a.href=url;a.download='va-learning-tracker.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+    })
+
+    document.getElementById('reset').addEventListener('click',()=>{if(confirm('Reset all progress to defaults?')){localStorage.removeItem('va-tracker-v1');render();}})
+
+    render();
+
+    /* Accessibility: reduce particle count if prefers-reduced-motion */
+    const mr=window.matchMedia('(prefers-reduced-motion: reduce)');if(mr.matches){particles=[]}
+  </script>
+</body>
+</html>
+```
+
+---
+
+If you'd like, I can:
+
+* Convert this into a GitHub Pages-ready `docs/` folder and add a `CNAME` or deploy branch instructions.
+* Make the background theme pastel, vaporwave, or minimal.
+* Add authentication (GitHub OAuth) to sync real GitHub issues or user accounts (requires backend).
+
+Tell me which of the above you want next and I’ll update the repo accordingly.
+
